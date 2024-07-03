@@ -18,5 +18,14 @@ module Protospace41261
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # tương đương với việc sử dụng như là --skip-test-framework 
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.test_framework false
+    end
+
   end
 end
