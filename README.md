@@ -8,3 +8,4 @@ rails generate model user email:string:uniq encrypted_password:string name:strin
  ## note
   t.references :model_name, options
   has_many :associated_models, options
+  
