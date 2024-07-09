@@ -13,11 +13,10 @@
     <%= f.label :concept, "コンセプト" %><br />
     <%= f.text_area :concept, class: :form__text, id:"concept" %>
   </div>
-
-  <%# <div class="field"> %>
-    <%# f.label :hoge, "プロトタイプの画像" %><br />
-    <%# f.file_field :hoge, id:"image" %>
-  <%# </div> %>
+  <div class="field">
+    <%= f.label :concept, "プロトタイプの画像" %><br />
+    <%= f.file_field :image,   id:"image" %>
+  </div>
 
   <div class="actions">
     <%= f.submit "保存する", class: :form__btn  %>

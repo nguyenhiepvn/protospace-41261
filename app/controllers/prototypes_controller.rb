@@ -9,6 +9,7 @@ class PrototypesController < ApplicationController
 
   # GET /prototypes/1 or /prototypes/1.json
   def show
+    @prototype = Prototype.find(params[:id])
   end
 
   # GET /prototypes/new
@@ -18,44 +19,50 @@ class PrototypesController < ApplicationController
 
   # GET /prototypes/1/edit
   def edit
+    @prototype = Prototype.find(params[:id])
+   
   end
+
+  # POST /prototypes/1/edit
+  def update
+    prototype = Prototype.find(params[:id])
+  
+    # Gán các thuộc tính từ params nhưng chưa lưu
+    prototype.assign_attributes(prototype_params) 
+  
+    # Kiểm tra validation trước khi lưu
+    if prototype.valid? 
+      prototype.save # Lưu nếu hợp lệ
+      redirect_to root_path
+    else
+      @prototype = prototype 
+      render :edit, locals: { prototype:  @prototype }
+    end    
+  end
+
 
   # POST /prototypes or /prototypes.json
   def create
-    @prototype = Prototype.new(prototype_params)
 
-    respond_to do |format|
-      if @prototype.save
-        format.html { redirect_to prototype_url(@prototype), notice: "Prototype was successfully created." }
-        format.json { render :show, status: :created, location: @prototype }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @prototype.errors, status: :unprocessable_entity }
-      end
-    end
+
+    if Prototype.new(prototype_params).save
+      redirect_to root_path
+    else
+
+      @prototype = Prototype.new
+      @prototype.assign_attributes(prototype_params) 
+      @prototype.image = nil
+      render :new, locals: { prototype: @prototype },status: :unprocessable_entity
+    end 
   end
 
-  # PATCH/PUT /prototypes/1 or /prototypes/1.json
-  def update
-    respond_to do |format|
-      if @prototype.update(prototype_params)
-        format.html { redirect_to prototype_url(@prototype), notice: "Prototype was successfully updated." }
-        format.json { render :show, status: :ok, location: @prototype }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @prototype.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /prototypes/1 or /prototypes/1.json
   def destroy
-    @prototype.destroy
+    prototype = Prototype.find(params[:id])
+    prototype.destroy
+    redirect_to root_path
 
-    respond_to do |format|
-      format.html { redirect_to prototypes_url, notice: "Prototype was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   def move_to_index
@@ -72,6 +79,6 @@ class PrototypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def prototype_params
-      params.fetch(:prototype, {})
+      params.require(:prototype).permit(:title,:catch_copy,:concept,:image).merge(user_id: current_user.id)
     end
 end
