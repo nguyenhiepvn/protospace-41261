@@ -73,3 +73,8 @@ end
 gem 'devise'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+group :production do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "pg"
+
+end
