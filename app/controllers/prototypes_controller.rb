@@ -38,7 +38,7 @@ class PrototypesController < ApplicationController
   
     if prototype.valid? 
       prototype.save # Lưu nếu hợp lệ
-      redirect_to root_path
+      redirect_to prototype_path(params[:id])
     else
       @prototype = prototype 
       render :edit, locals: { prototype:  @prototype }
