@@ -55,12 +55,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  pool: 5
-  database: protospace_41261_production
-  username: protospace_41261_production_user
-  password: sUNa0eUU57HDwCc5xxnXDQyaYvU3e1Vr
-  host: dpg-cq7oh0rv2p9s73c7r23g-a
-  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: postgresql://protospace_41261_production_user:sUNa0eUU57HDwCc5xxnXDQyaYvU3e1Vr@dpg-cq7oh0rv2p9s73c7r23g-a/protospace_41261_production
 # Ensure the MySQL gem is defined in your Gemfile
 #   gem "mysql2"
 #
