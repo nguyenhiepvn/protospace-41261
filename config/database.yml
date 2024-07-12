@@ -53,9 +53,14 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
   adapter: postgresql
-  url: postgresql://protospace_41261_production_user:sUNa0eUU57HDwCc5xxnXDQyaYvU3e1Vr@dpg-cq7oh0rv2p9s73c7r23g-a/protospace_41261_production
+  encoding: unicode
+  pool: 5
+  database: protospace_41261_production
+  username: protospace_41261_production_user
+  password: sUNa0eUU57HDwCc5xxnXDQyaYvU3e1Vr
+  host: dpg-cq7oh0rv2p9s73c7r23g-a
+  port: 5432
 # Ensure the MySQL gem is defined in your Gemfile
 #   gem "mysql2"
 #
