@@ -41,7 +41,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: postgresql://protospace_41261_production_user:sUNa0eUU57HDwCc5xxnXDQyaYvU3e1Vr@dpg-cq7oh0rv2p9s73c7r23g-a/protospace_41261_production
+  url: postgresql://protospace_41261_user:xxqJIvAZFZRVTXhBxYSKNH3LxpV3JWkD@dpg-cq88ecaj1k6c73cg6ahg-a.oregon-postgres.render.com/protospace_41261
 # Ensure the MySQL gem is defined in your Gemfile
 #   gem "mysql2"
 #
