@@ -1,7 +1,6 @@
-[11:08] 海野 璃衣
 # usersテーブル
 | title              | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
+| ------------------ | ----- | ------------------------- |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | name               | string | null: false               |
