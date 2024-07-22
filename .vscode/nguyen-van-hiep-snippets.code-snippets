@@ -1,0 +1,61 @@
+{
+  "Rails Helper Method": {
+    "prefix": "rails_helper_method",
+    "body": [
+      "module ${1:HelperName}",
+      "  def ${2:method_name}(${3:args})",
+      "    ${4:# implementation}",
+      "  end",
+      "end"
+    ],
+    "description": "Create a Rails helper method"
+  },
+  "Format Date Helper": {
+    "prefix": "format_date",
+    "body": [
+      "def format_date(date)",
+      "  date.strftime(\"%d/%m/%Y\")",
+      "end"
+    ],
+    "description": "Helper method to format date"
+  },
+  "Link to Profile Helper": {
+    "prefix": "link_to_profile",
+    "body": [
+      "def link_to_profile(user)",
+      "  link_to user.name, user_path(user)",
+      "end"
+    ],
+    "description": "Helper method to create a link to user profile"
+  },
+  "Truncate Text Helper": {
+    "prefix": "truncate_text",
+    "body": [
+      "def truncate_text(text, length = 30)",
+      "  truncate(text, length: length)",
+      "end"
+    ],
+    "description": "Helper method to truncate text"
+  },
+  "Format Currency Helper": {
+    "prefix": "format_currency",
+    "body": [
+      "def format_currency(amount)",
+      "  number_to_currency(amount, unit: \"₫\", delimiter: \".\", format: \"%n %u\")",
+      "end"
+    ],
+    "description": "Helper method to format currency"
+  },
+  "Avatar For User Helper": {
+    "prefix": "avatar_for",
+    "body": [
+      "def avatar_for(user, options = { size: 80 })",
+      "  size = options[:size]",
+      "  gravatar_id = Digest::MD5::hexdigest(user.email.downcase)",
+      "  gravatar_url = \"https://secure.gravatar.com/avatar/\#{gravatar_id}?s=\#{size}\"",
+      "  image_tag(gravatar_url, alt: user.name, class: \"gravatar\")",
+      "end"
+    ],
+    "description": "Helper method to display user avatar"
+  }
+}
